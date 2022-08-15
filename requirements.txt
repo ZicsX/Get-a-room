@@ -2,5 +2,5 @@ numpy
 scipy
 scikit-learn
 pandas
-matplotlib
-seaborn
+clearml
+tpot

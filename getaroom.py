@@ -1,11 +1,10 @@
 # Import Libraries
 import pandas as pd
 
-from sklearn.model_selection  import RepeatedKFold
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
-from sklearn.neural_network import MLPRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.impute import SimpleImputer
@@ -13,9 +12,13 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
+from sklearn.linear_model import ElasticNetCV
+from sklearn.pipeline import make_pipeline
+from tpot.builtins import StackingEstimator
+
 from clearml import Task
 task = Task.init(project_name='Get A Room',
-                task_name='MLPRegressor')
+                task_name='Regressor-Pipeline')
 
 
 # read in data
@@ -87,15 +90,16 @@ test = sc.transform(test)
 # split into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(train, y, test_size=0.2, random_state=42)
 
+
 # Define models
-model = MLPRegressor(hidden_layer_sizes=(10,10,5,3),
-     batch_size =16, max_iter=1000, alpha=0.0001,
-     solver='adam', verbose=True, tol=0.000000001,
-     random_state=42, learning_rate_init=0.001)
+exported_pipeline = make_pipeline(
+    StackingEstimator(estimator=ElasticNetCV(l1_ratio=0.2, tol=0.001)),
+    RandomForestRegressor(bootstrap=True, max_features=0.7000000000000001,
+                         min_samples_leaf=5, min_samples_split=13, n_estimators=100)
+)
 
 # Evaluate
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-print("Model: %s" % model.__class__.__name__)
+exported_pipeline.fit(X_train, y_train)
+y_pred = exported_pipeline.predict(X_test)
 print("R-squared: %f" % r2_score(y_test, y_pred))
 print("\n")
