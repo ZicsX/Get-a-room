@@ -102,4 +102,3 @@ exported_pipeline = make_pipeline(
 exported_pipeline.fit(X_train, y_train)
 y_pred = exported_pipeline.predict(X_test)
 print("R-squared: %f" % r2_score(y_test, y_pred))
-print("\n")
