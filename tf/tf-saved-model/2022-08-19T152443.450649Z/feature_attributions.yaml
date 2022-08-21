@@ -1,0 +1,30 @@
+type: object
+properties:
+  Property_ID:
+    type: number
+  Property_Type:
+    type: number
+  Property_Area:
+    type: number
+  Number_of_Windows:
+    type: number
+  Number_of_Doors:
+    type: number
+  Furnishing:
+    type: number
+  Frequency_of_Powercuts:
+    type: number
+  Power_Backup:
+    type: number
+  Water_Supply:
+    type: number
+  Traffic_Density_Score:
+    type: number
+  Crime_Rate:
+    type: number
+  Dust_and_Noise:
+    type: number
+  Air_Quality_Index:
+    type: number
+  Neighborhood_Review:
+    type: number

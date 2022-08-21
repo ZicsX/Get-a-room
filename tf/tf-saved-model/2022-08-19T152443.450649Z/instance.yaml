@@ -1,0 +1,75 @@
+type: object
+required:
+- Property_ID
+- Property_Type
+- Property_Area
+- Number_of_Windows
+- Number_of_Doors
+- Furnishing
+- Frequency_of_Powercuts
+- Power_Backup
+- Water_Supply
+- Traffic_Density_Score
+- Crime_Rate
+- Dust_and_Noise
+- Air_Quality_Index
+- Neighborhood_Review
+properties:
+  Property_ID:
+    type: string
+    nullable: true
+  Property_Type:
+    type: string
+    nullable: true
+  Property_Area:
+    type: string
+    nullable: true
+  Number_of_Windows:
+    type: string
+    nullable: true
+  Number_of_Doors:
+    type: string
+    nullable: true
+  Furnishing:
+    type: string
+    nullable: true
+  Frequency_of_Powercuts:
+    type: string
+    nullable: true
+  Power_Backup:
+    type: string
+    nullable: true
+  Water_Supply:
+    type: string
+    nullable: true
+  Traffic_Density_Score:
+    type: string
+    nullable: true
+  Crime_Rate:
+    type: string
+    nullable: true
+  Dust_and_Noise:
+    type: string
+    nullable: true
+  Air_Quality_Index:
+    type: string
+    nullable: true
+  Neighborhood_Review:
+    type: string
+    nullable: true
+nullable: true
+example:
+  Property_ID: '0xfff'
+  Property_Type: Apartment
+  Property_Area: '933.0'
+  Number_of_Windows: '4.0'
+  Number_of_Doors: '2'
+  Furnishing: Semi_Furnished
+  Frequency_of_Powercuts: '0.0'
+  Power_Backup: 'No'
+  Water_Supply: All time
+  Traffic_Density_Score: '6.47'
+  Crime_Rate: Well below average
+  Dust_and_Noise: Medium
+  Air_Quality_Index: '113.0'
+  Neighborhood_Review: '3.85'
