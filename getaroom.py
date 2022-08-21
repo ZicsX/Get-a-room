@@ -16,11 +16,6 @@ from sklearn.linear_model import ElasticNetCV
 from sklearn.pipeline import make_pipeline
 from tpot.builtins import StackingEstimator
 
-from clearml import Task
-task = Task.init(project_name='Get A Room',
-                task_name='Regressor-Pipeline')
-
-
 # read in data
 train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
